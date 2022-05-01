@@ -31,7 +31,7 @@ public class CustomizedTable extends JTable {
     }
 
     public void setSortable(boolean sortable) {
-        this.getTableHeader().setEnabled(false);
+        this.getTableHeader().setEnabled(sortable);
     }
 
     @Override

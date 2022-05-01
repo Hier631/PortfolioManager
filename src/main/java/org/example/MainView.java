@@ -4,24 +4,26 @@ import net.miginfocom.swing.MigLayout;
 import org.example.customizedcomponents.CustomizedTable;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
-// TODO: Clean this code.
 
 public class MainView extends JFrame {
 
+    public static final String APP_TITLE = "Portfolio Manager";
+
     public MainView() {
-        super("Portfolio Manager");
+        super(APP_TITLE);
         this.setLayout(new MigLayout("wrap 3", "[sizegroup][sizegroup][sizegroup]"));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        String[][] testData = { { "1", "2", "3", "4", "5" },
-                                { "1", "2", "3", "4", "5" },
-                                { "1", "2", "3", "4", "5" }, };
+        addIndexFundsTable();
+        addButtons();
 
-        String[] testTitles = { "Title 1", "Title 2", "Title 3", "Title 4", "Title 5" };
+        this.pack();
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+    }
 
-        CustomizedTable ctbIndexFunds = new CustomizedTable(testData, testTitles);
+    private void addIndexFundsTable() {
+        CustomizedTable ctbIndexFunds = new CustomizedTable();
         JScrollPane spIndexFunds = new JScrollPane(ctbIndexFunds);
 
         ctbIndexFunds.setShowGrid(true);
@@ -29,6 +31,10 @@ public class MainView extends JFrame {
         ctbIndexFunds.setSortable(false);
         ctbIndexFunds.setCellSelectionEnabled(true);
 
+        this.add(spIndexFunds, "grow, push, span");
+    }
+
+    private void addButtons() {
         JButton btnAddIndexFund = new JButton("Add");
         JButton btnUpdateIndexFund = new JButton("Update");
         JButton btnDeleteIndexFund = new JButton("Delete");
@@ -40,11 +46,5 @@ public class MainView extends JFrame {
         this.add(btnAddIndexFund, "growx, pushx");
         this.add(btnUpdateIndexFund, "growx, pushx");
         this.add(btnDeleteIndexFund, "growx, pushx");
-        this.add(spIndexFunds, "grow, push, span");
-
-
-        this.pack();
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
     }
 }
