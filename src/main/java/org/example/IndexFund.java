@@ -1,4 +1,4 @@
-package org.example.customizedcomponents;
+package org.example;
 
 public class IndexFund {
     private String isin;

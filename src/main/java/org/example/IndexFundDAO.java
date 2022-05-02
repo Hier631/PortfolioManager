@@ -1,4 +1,4 @@
-package org.example.customizedcomponents;
+package org.example;
 
 import org.example.utils.CSV;
 
