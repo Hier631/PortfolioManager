@@ -1,10 +1,10 @@
-package org.example;
+package org.example.model;
 
-public class IndexFund {
+public class IndexFundDto {
     private String isin;
     private String name;
 
-    public IndexFund(String isin, String name) {
+    public IndexFundDto(String isin, String name) {
         this.isin = isin;
         this.name = name;
     }

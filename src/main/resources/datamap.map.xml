@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/10/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/10/modelMap https://cayenne.apache.org/schema/10/modelMap.xsd"
+	 project-version="10">
+	<property name="defaultPackage" value="org.example.model"/>
+	<db-entity name="INDEX_FUND">
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="ISIN" type="VARCHAR" isMandatory="true" length="12"/>
+		<db-attribute name="NAME" type="VARCHAR" isMandatory="true" length="100"/>
+	</db-entity>
+	<obj-entity name="IndexFund" className="org.example.model.IndexFund" dbEntityName="INDEX_FUND">
+		<obj-attribute name="isin" type="java.lang.String" db-attribute-path="ISIN"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+	</obj-entity>
+	<cgen xmlns="http://cayenne.apache.org/schema/10/cgen">
+		<destDir>..\java</destDir>
+		<mode>entity</mode>
+		<template>templates/v4_1/subclass.vm</template>
+		<superTemplate>templates/v4_1/superclass.vm</superTemplate>
+		<template>templates/v4_1/subclass.vm</template>
+		<superTemplate>templates/v4_1/superclass.vm</superTemplate>
+		<embeddableTemplate>templates/v4_1/embeddable-subclass.vm</embeddableTemplate>
+		<embeddableSuperTemplate>templates/v4_1/embeddable-superclass.vm</embeddableSuperTemplate>
+		<queryTemplate>templates/v4_1/datamap-subclass.vm</queryTemplate>
+		<querySuperTemplate>templates/v4_1/datamap-superclass.vm</querySuperTemplate>
+		<outputPattern>*.java</outputPattern>
+		<makePairs>true</makePairs>
+		<usePkgPath>true</usePkgPath>
+		<overwrite>false</overwrite>
+		<createPropertyNames>false</createPropertyNames>
+		<createPKProperties>false</createPKProperties>
+		<client>false</client>
+	</cgen>
+</data-map>

@@ -1,8 +1,8 @@
-package org.example;
+package org.example.model;
 
 import java.util.List;
 
-public interface DAO<T, K> {
+public interface Dao<T, K> {
     T get(K id);
     List<T> getAll();
     void save(T t);
