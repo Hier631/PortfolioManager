@@ -12,7 +12,7 @@ public class IndexFundDao implements Dao<IndexFundDto, String> {
     private final ObjectContext context = CayenneUtil.getContext();
 
     @Override
-    public IndexFundDto get(String id) {
+    public IndexFundDto getById(String id) {
 
         IndexFundDto indexFundDto = null;
 
@@ -25,6 +25,17 @@ public class IndexFundDao implements Dao<IndexFundDto, String> {
         }
 
         return indexFundDto;
+    }
+
+    @Override
+    public void deleteById(String id) {
+        if (id != null) {
+            IndexFund indexFund = getIndexFund(id);
+            if (indexFund != null) {
+                context.deleteObject(indexFund);
+                context.commitChanges();
+            }
+        }
     }
 
     @Override

@@ -7,7 +7,8 @@ public class App
     public static void main( String[] args )
     {
         FlatHiberbeeDarkIJTheme.setup();
-        new MainView();
+
+        new MainController(new MainView());
 
         // CayenneUtil.shutdown();
     }

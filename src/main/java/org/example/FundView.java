@@ -7,14 +7,22 @@ import javax.swing.*;
 
 public class FundView extends JPanel {
 
-    public FundView() {
-        this.setLayout(new MigLayout("", "[sizegroup][sizegroup][sizegroup]"));
-        addIndexFundsTable();
+    private MainView mainView;
+
+    private CustomizedTable ctbIndexFunds;
+    private JButton btnAddIndexFund;
+    private JButton btnDeleteIndexFund;
+
+    public FundView(MainView mainView) {
+        this.mainView = mainView;
+
+        this.setLayout(new MigLayout("wrap 3", "[sizegroup][sizegroup][sizegroup]"));
         addButtons();
+        addIndexFundsTable();
     }
 
     private void addIndexFundsTable() {
-        CustomizedTable ctbIndexFunds = new CustomizedTable();
+        ctbIndexFunds = new CustomizedTable();
         JScrollPane spIndexFunds = new JScrollPane(ctbIndexFunds);
 
         ctbIndexFunds.setShowGrid(true);
@@ -26,9 +34,9 @@ public class FundView extends JPanel {
     }
 
     private void addButtons() {
-        JButton btnAddIndexFund = new JButton("Add");
+        btnAddIndexFund = new JButton("Add");
         JButton btnUpdateIndexFund = new JButton("Update");
-        JButton btnDeleteIndexFund = new JButton("Delete");
+        btnDeleteIndexFund = new JButton("Delete");
 
         btnAddIndexFund.setFocusable(false);
         btnUpdateIndexFund.setFocusable(false);
@@ -37,5 +45,21 @@ public class FundView extends JPanel {
         this.add(btnAddIndexFund, "growx, pushx");
         this.add(btnUpdateIndexFund, "growx, pushx");
         this.add(btnDeleteIndexFund, "growx, pushx");
+    }
+
+    public MainView getMainView() {
+        return mainView;
+    }
+
+    public JButton getBtnAddIndexFund() {
+        return btnAddIndexFund;
+    }
+
+    public JButton getBtnDeleteIndexFund() {
+        return btnDeleteIndexFund;
+    }
+
+    public CustomizedTable getCtbIndexFunds() {
+        return ctbIndexFunds;
     }
 }
