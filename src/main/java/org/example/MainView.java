@@ -11,40 +11,13 @@ public class MainView extends JFrame {
 
     public MainView() {
         super(APP_TITLE);
-        this.setLayout(new MigLayout("wrap 3", "[sizegroup][sizegroup][sizegroup]"));
+        this.setLayout(new MigLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        addIndexFundsTable();
-        addButtons();
+        this.add(new FundView(), "grow, push");
 
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-    }
-
-    private void addIndexFundsTable() {
-        CustomizedTable ctbIndexFunds = new CustomizedTable();
-        JScrollPane spIndexFunds = new JScrollPane(ctbIndexFunds);
-
-        ctbIndexFunds.setShowGrid(true);
-        ctbIndexFunds.setEditable(false);
-        ctbIndexFunds.setSortable(false);
-        ctbIndexFunds.setCellSelectionEnabled(true);
-
-        this.add(spIndexFunds, "grow, push, span");
-    }
-
-    private void addButtons() {
-        JButton btnAddIndexFund = new JButton("Add");
-        JButton btnUpdateIndexFund = new JButton("Update");
-        JButton btnDeleteIndexFund = new JButton("Delete");
-
-        btnAddIndexFund.setFocusable(false);
-        btnUpdateIndexFund.setFocusable(false);
-        btnDeleteIndexFund.setFocusable(false);
-
-        this.add(btnAddIndexFund, "growx, pushx");
-        this.add(btnUpdateIndexFund, "growx, pushx");
-        this.add(btnDeleteIndexFund, "growx, pushx");
     }
 }
