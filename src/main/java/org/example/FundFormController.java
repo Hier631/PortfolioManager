@@ -4,18 +4,18 @@ import org.example.model.Dao;
 import org.example.model.IndexFundDao;
 import org.example.model.IndexFundDto;
 
-public class AddFundController {
+public class FundFormController {
 
-    Dao<IndexFundDto, String> dao;
+    Dao<IndexFundDto, Integer> dao;
 
-    private AddFundView view;
+    private FundFormView view;
 
-    public AddFundController(AddFundView view) {
+    public FundFormController(FundFormView view) {
         this.view = view;
         dao = new IndexFundDao();
     }
 
-    public AddFundView getView() {
+    public FundFormView getView() {
         return view;
     }
 

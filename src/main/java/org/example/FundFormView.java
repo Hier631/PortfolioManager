@@ -4,7 +4,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 
-public class AddFundView extends JPanel {
+public class FundFormView extends JPanel {
 
     private MainView mainView;
     private JTextField tfIsin;
@@ -33,7 +33,7 @@ public class AddFundView extends JPanel {
         return btnCancel;
     }
 
-    public AddFundView(MainView mainView) {
+    public FundFormView(MainView mainView) {
         this.mainView = mainView;
 
         this.setLayout(new MigLayout("wrap 1"));

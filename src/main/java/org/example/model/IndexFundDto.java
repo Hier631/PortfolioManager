@@ -1,12 +1,26 @@
 package org.example.model;
 
 public class IndexFundDto {
+    private Integer id;
     private String isin;
     private String name;
 
-    public IndexFundDto(String isin, String name) {
+    public IndexFundDto(Integer id, String isin, String name) {
+        this.id = id;
         this.isin = isin;
         this.name = name;
+    }
+
+    public IndexFundDto(String isin, String name) {
+        this(null, isin, name);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getIsin() {

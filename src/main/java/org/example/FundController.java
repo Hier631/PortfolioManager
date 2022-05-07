@@ -1,18 +1,20 @@
 package org.example;
 
-import org.example.FundView;
 import org.example.customizedcomponents.CustomizedTable;
 import org.example.model.Dao;
 import org.example.model.IndexFundDao;
 import org.example.model.IndexFundDto;
 
 import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FundController {
 
     private FundView view;
-    private Dao<IndexFundDto, String> dao = new IndexFundDao();
+    private Dao<IndexFundDto, Integer> dao = new IndexFundDao();
+    private Map<String, Integer> fundIsinToId;
 
     public FundController(FundView view) {
         this.view = view;
@@ -33,7 +35,7 @@ public class FundController {
     }
 
     private void addFund() {
-        AddFundController controller = new AddFundController(new AddFundView(view.getMainView()));
+        FundFormController controller = new FundFormController(new FundFormView(view.getMainView()));
         controller.initController();
         view.getMainView().setPanel(controller.getView());
     }
@@ -41,7 +43,7 @@ public class FundController {
     private void deleteFund() {
         CustomizedTable table = view.getCtbIndexFunds();
         String fundIsin = (String) table.getValueAt(table.getSelectedRow(), table.getColumn("ISIN").getModelIndex());
-        dao.deleteById(fundIsin);
+        dao.deleteById(fundIsinToId.get(fundIsin));
         updateTable();
     }
 
@@ -51,9 +53,11 @@ public class FundController {
         tableModel.addColumn("Name");
 
         List<IndexFundDto> indexFundDtoList = dao.getAll();
+        fundIsinToId = new HashMap<>();
 
         if (indexFundDtoList != null) {
             for (IndexFundDto indexFundDto : indexFundDtoList) {
+                fundIsinToId.put(indexFundDto.getIsin(), indexFundDto.getId());
                 tableModel.addRow(new Object[] {indexFundDto.getIsin(), indexFundDto.getName()});
             }
         }
