@@ -12,6 +12,7 @@ public class FundView extends JPanel {
     private CustomizedTable ctbIndexFunds;
     private JButton btnAddIndexFund;
     private JButton btnDeleteIndexFund;
+    private JButton btnUpdateIndexFund;
 
     public FundView(MainView mainView) {
         this.mainView = mainView;
@@ -35,7 +36,7 @@ public class FundView extends JPanel {
 
     private void addButtons() {
         btnAddIndexFund = new JButton("Add");
-        JButton btnUpdateIndexFund = new JButton("Update");
+        btnUpdateIndexFund = new JButton("Update");
         btnDeleteIndexFund = new JButton("Delete");
 
         btnAddIndexFund.setFocusable(false);
@@ -53,6 +54,10 @@ public class FundView extends JPanel {
 
     public JButton getBtnAddIndexFund() {
         return btnAddIndexFund;
+    }
+
+    public JButton getBtnUpdateIndexFund() {
+        return btnUpdateIndexFund;
     }
 
     public JButton getBtnDeleteIndexFund() {

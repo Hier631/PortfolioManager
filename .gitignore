@@ -37,3 +37,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Apache Derby ###
+/portfoliodb/
+derby.log

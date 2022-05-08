@@ -9,10 +9,27 @@ public class FundFormController {
     Dao<IndexFundDto, Integer> dao;
 
     private FundFormView view;
+    private Integer fundId;
+
+    public FundFormController(FundFormView view, Integer fundId) {
+        dao = new IndexFundDao();
+
+        this.view = view;
+        this.fundId = fundId;
+
+        initView();
+    }
 
     public FundFormController(FundFormView view) {
-        this.view = view;
-        dao = new IndexFundDao();
+        this(view, null);
+    }
+
+    private void initView() {
+        if (fundId != null) {
+            IndexFundDto indexFundDto = dao.getById(fundId);
+            view.getTfIsin().setText(indexFundDto.getIsin());
+            view.getTfName().setText(indexFundDto.getName());
+        }
     }
 
     public FundFormView getView() {
@@ -20,14 +37,23 @@ public class FundFormController {
     }
 
     public void initController() {
-        view.getBtnOk().addActionListener(e -> {
-            addFund();
-            goBack();
-        });
+        if (fundId == null) {
+            view.getBtnOk().addActionListener(e -> {
+                addFund();
+                goBack();
+            });
+        }
+        else {
+            view.getBtnOk().addActionListener(e -> {
+                updateFund();
+                goBack();
+            });
+        }
+
         view.getBtnCancel().addActionListener(e -> goBack());
     }
 
-    public void addFund() {
+    private void addFund() {
         IndexFundDto indexFundDto = new IndexFundDto(
                 view.getTfIsin().getText(),
                 view.getTfName().getText()
@@ -36,7 +62,14 @@ public class FundFormController {
         dao.save(indexFundDto);
     }
 
-    public void goBack() {
+    private void updateFund() {
+        IndexFundDto indexFundDto = dao.getById(fundId);
+        indexFundDto.setIsin(view.getTfIsin().getText());
+        indexFundDto.setName(view.getTfName().getText());
+        dao.update(indexFundDto);
+    }
+
+    private void goBack() {
         FundController controller = new FundController(new FundView(view.getMainView()));
         controller.initController();
         view.getMainView().setPanel(controller.getView());

@@ -21,7 +21,7 @@ public class FundController {
         initView();
     }
 
-    public void initView() {
+    private void initView() {
         updateTable();
     }
 
@@ -31,6 +31,7 @@ public class FundController {
 
     public void initController() {
         view.getBtnAddIndexFund().addActionListener(e -> addFund());
+        view.getBtnUpdateIndexFund().addActionListener(e -> updateFund());
         view.getBtnDeleteIndexFund().addActionListener(e -> deleteFund());
     }
 
@@ -40,11 +41,21 @@ public class FundController {
         view.getMainView().setPanel(controller.getView());
     }
 
+    private void updateFund() {
+        FundFormController controller = new FundFormController(new FundFormView(view.getMainView()), getSelectedFundId());
+        controller.initController();
+        view.getMainView().setPanel(controller.getView());
+    }
+
     private void deleteFund() {
+        dao.deleteById(getSelectedFundId());
+        updateTable();
+    }
+
+    private int getSelectedFundId() {
         CustomizedTable table = view.getCtbIndexFunds();
         String fundIsin = (String) table.getValueAt(table.getSelectedRow(), table.getColumn("ISIN").getModelIndex());
-        dao.deleteById(fundIsinToId.get(fundIsin));
-        updateTable();
+        return fundIsinToId.get(fundIsin);
     }
 
     private void updateTable() {
