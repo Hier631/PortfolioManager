@@ -6,10 +6,12 @@ import org.example.model.IndexFundDto;
 
 public class FundFormController {
 
-    Dao<IndexFundDto, Integer> dao;
+    private Dao<IndexFundDto, Integer> dao;
 
     private FundFormView view;
     private Integer fundId;
+
+    private Updatable updatable;
 
     public FundFormController(FundFormView view, Integer fundId) {
         dao = new IndexFundDao();
@@ -36,7 +38,9 @@ public class FundFormController {
         return view;
     }
 
-    public void initController() {
+    public void initController(Updatable updatable) {
+        this.updatable = updatable;
+
         if (fundId == null) {
             view.getBtnOk().addActionListener(e -> {
                 addFund();
@@ -70,8 +74,7 @@ public class FundFormController {
     }
 
     private void goBack() {
-        FundController controller = new FundController(new FundView(view.getMainView()));
-        controller.initController();
-        view.getMainView().setPanel(controller.getView());
+        view.getMainView().returnToPreviousPanel();
+        this.updatable.update();
     }
 }

@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FundController {
+public class FundController implements Updatable {
 
     private FundView view;
     private Dao<IndexFundDto, Integer> dao = new IndexFundDao();
@@ -37,13 +37,13 @@ public class FundController {
 
     private void addFund() {
         FundFormController controller = new FundFormController(new FundFormView(view.getMainView()));
-        controller.initController();
+        controller.initController(this);
         view.getMainView().setPanel(controller.getView());
     }
 
     private void updateFund() {
         FundFormController controller = new FundFormController(new FundFormView(view.getMainView()), getSelectedFundId());
-        controller.initController();
+        controller.initController(this);
         view.getMainView().setPanel(controller.getView());
     }
 
@@ -74,5 +74,10 @@ public class FundController {
         }
 
         view.getCtbIndexFunds().setModel(tableModel);
+    }
+
+    @Override
+    public void update() {
+        updateTable();
     }
 }
