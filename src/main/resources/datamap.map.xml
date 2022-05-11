@@ -5,14 +5,36 @@
 	 project-version="10">
 	<property name="defaultPackage" value="org.example.model"/>
 	<db-entity name="INDEX_FUND">
-		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
-		<db-attribute name="ISIN" type="VARCHAR" isMandatory="true" length="12"/>
-		<db-attribute name="NAME" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="isin" type="VARCHAR" isMandatory="true" length="12"/>
+		<db-attribute name="name" type="VARCHAR" length="100"/>
+	</db-entity>
+	<db-entity name="ORDER">
+		<db-attribute name="date" type="DATE"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="index_fund_id" type="INTEGER"/>
+		<db-attribute name="purchase" type="BOOLEAN"/>
+		<db-attribute name="share_price" type="DECIMAL" length="11" scale="4"/>
+		<db-attribute name="share_quantity" type="DECIMAL" length="19" scale="6"/>
 	</db-entity>
 	<obj-entity name="IndexFund" className="org.example.model.IndexFund" dbEntityName="INDEX_FUND">
-		<obj-attribute name="isin" type="java.lang.String" db-attribute-path="ISIN"/>
-		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+		<obj-attribute name="isin" type="java.lang.String" db-attribute-path="isin"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
 	</obj-entity>
+	<obj-entity name="Order" className="org.example.model.Order" dbEntityName="ORDER">
+		<obj-attribute name="date" type="java.time.LocalDate" db-attribute-path="date"/>
+		<obj-attribute name="purchase" type="boolean" db-attribute-path="purchase"/>
+		<obj-attribute name="sharePrice" type="java.math.BigDecimal" db-attribute-path="share_price"/>
+		<obj-attribute name="shareQuantity" type="java.math.BigDecimal" db-attribute-path="share_quantity"/>
+	</obj-entity>
+	<db-relationship name="orders" source="INDEX_FUND" target="ORDER" toMany="true">
+		<db-attribute-pair source="id" target="index_fund_id"/>
+	</db-relationship>
+	<db-relationship name="indexFund" source="ORDER" target="INDEX_FUND">
+		<db-attribute-pair source="index_fund_id" target="id"/>
+	</db-relationship>
+	<obj-relationship name="orders" source="IndexFund" target="Order" deleteRule="Cascade" db-relationship-path="orders"/>
+	<obj-relationship name="indexFund" source="Order" target="IndexFund" deleteRule="Nullify" db-relationship-path="indexFund"/>
 	<cgen xmlns="http://cayenne.apache.org/schema/10/cgen">
 		<destDir>..\java</destDir>
 		<mode>entity</mode>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <graphs xmlns="http://cayenne.apache.org/schema/10/graph">
 	<graph type="CLASS" scale="1.0">
-		<entity name="IndexFund" x="860.21" y="46.22" width="61.0" height="66.0"/>
+		<entity name="Order" x="0.0" y="0.0" width="76.0" height="98.0"/>
+		<entity name="IndexFund" x="0.0" y="0.0" width="61.0" height="66.0"/>
 	</graph>
 	<graph type="ER" scale="1.0">
+		<entity name="ORDER" x="0.0" y="0.0" width="79.0" height="130.0"/>
 		<entity name="INDEX_FUND" x="25.55" y="356.57" width="76.0" height="82.0"/>
 	</graph>
 </graphs>
