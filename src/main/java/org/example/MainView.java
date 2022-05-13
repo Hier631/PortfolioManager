@@ -15,9 +15,10 @@ public class MainView extends JFrame {
 
     public MainView() {
         super(APP_TITLE);
-        this.setLayout(new MigLayout());
+        this.setLayout(new MigLayout("insets 0", "[fill, 20%][fill, 80%]"));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        this.add(new SideMenuView(), "gaptop 6px, grow");
     }
 
     public void setPanel(JPanel panel) {
