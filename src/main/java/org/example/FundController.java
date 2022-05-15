@@ -38,13 +38,15 @@ public class FundController implements Updatable {
     private void addFund() {
         FundFormController controller = new FundFormController(new FundFormView(view.getMainView()));
         controller.initController(this);
-        view.getMainView().setPanel(controller.getView());
+        view.getMainView().addCard(controller.getView(), MainView.FUND_FORM_VIEW_ID);
+        view.getMainView().showCard(MainView.FUND_FORM_VIEW_ID);
     }
 
     private void updateFund() {
         FundFormController controller = new FundFormController(new FundFormView(view.getMainView()), getSelectedFundId());
         controller.initController(this);
-        view.getMainView().setPanel(controller.getView());
+        view.getMainView().addCard(controller.getView(), MainView.FUND_FORM_VIEW_ID);
+        view.getMainView().showCard(MainView.FUND_FORM_VIEW_ID);
     }
 
     private void deleteFund() {

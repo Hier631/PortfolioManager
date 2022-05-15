@@ -13,6 +13,8 @@ public class MainController {
     public void initView() {
         FundController controller = new FundController(new FundView(mainView));
         controller.initController();
-        mainView.setPanel(controller.getView());
+        mainView.addCard(controller.getView(), MainView.FUND_VIEW_ID);
+        mainView.showCard(MainView.FUND_VIEW_ID);
+        mainView.showView();
     }
 }

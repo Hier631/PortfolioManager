@@ -74,7 +74,9 @@ public class FundFormController {
     }
 
     private void goBack() {
-        view.getMainView().returnToPreviousPanel();
         this.updatable.update();
+
+        view.getMainView().showCard(MainView.FUND_VIEW_ID);
+        view.getMainView().removeCard(MainView.FUND_FORM_VIEW_ID);
     }
 }
