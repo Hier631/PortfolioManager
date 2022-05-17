@@ -5,14 +5,14 @@ import java.time.LocalDate;
 
 public class OrderDto {
 
-    private int id;
+    private Integer id;
     private LocalDate date;
     private boolean purchase;
     private BigDecimal sharePrice;
     private BigDecimal shareQuantity;
-    private int indexFundId;
+    private Integer indexFundId;
 
-    public OrderDto(int id, LocalDate date, boolean purchase, BigDecimal sharePrice, BigDecimal shareQuantity, int indexFundId) {
+    public OrderDto(Integer id, LocalDate date, boolean purchase, BigDecimal sharePrice, BigDecimal shareQuantity, Integer indexFundId) {
         this.id = id;
         this.date = date;
         this.purchase = purchase;
@@ -21,11 +21,15 @@ public class OrderDto {
         this.indexFundId = indexFundId;
     }
 
-    public int getId() {
+    public OrderDto(LocalDate date, boolean purchase, BigDecimal sharePrice, BigDecimal shareQuantity) {
+        this(null, date, purchase, sharePrice, shareQuantity, null);
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -61,11 +65,11 @@ public class OrderDto {
         this.shareQuantity = shareQuantity;
     }
 
-    public int getIndexFundId() {
+    public Integer getIndexFundId() {
         return indexFundId;
     }
 
-    public void setIndexFundId(int indexFundId) {
+    public void setIndexFundId(Integer indexFundId) {
         this.indexFundId = indexFundId;
     }
 }

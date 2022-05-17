@@ -14,7 +14,6 @@ public class IndexFundDao implements Dao<IndexFundDto, Integer> {
 
     @Override
     public IndexFundDto getById(Integer id) {
-
         IndexFundDto indexFundDto = null;
 
         if (id != null) {
