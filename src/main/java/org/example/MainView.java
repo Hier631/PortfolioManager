@@ -30,7 +30,7 @@ public class MainView extends JFrame {
         this.setPreferredSize(new Dimension(800, 600));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.sideMenuView = new SideMenuView();
+        this.sideMenuView = new SideMenuView(this);
 
         this.add(this.sideMenuView, "gaptop 6px, grow");
         this.add(cards, "grow, push");

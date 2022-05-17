@@ -24,6 +24,15 @@ public class SideMenuController {
 
                 view.setSelected(view.getLblIndexFunds(), isSelected);
                 view.setSelected(view.getLblOrders(), !isSelected);
+
+                // TODO: Delete this code later
+
+                if (!isSelected) {
+                    view.getMainView().addCard(new OrderView(view.getMainView()), "Test");
+                    view.getMainView().showCard("Test");
+                }
+
+                // Delete
             }
 
             @Override
