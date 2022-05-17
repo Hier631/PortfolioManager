@@ -17,6 +17,12 @@ public class MainView extends JFrame {
     private Map<String, JPanel> panels = new HashMap<>();
     private boolean isViewShown = false;
 
+    private SideMenuView sideMenuView;
+
+    public SideMenuView getSideMenuView() {
+        return sideMenuView;
+    }
+
     public MainView() {
         super(APP_TITLE);
 
@@ -24,7 +30,9 @@ public class MainView extends JFrame {
         this.setPreferredSize(new Dimension(800, 600));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.add(new SideMenuView(), "gaptop 6px, grow");
+        this.sideMenuView = new SideMenuView();
+
+        this.add(this.sideMenuView, "gaptop 6px, grow");
         this.add(cards, "grow, push");
     }
 

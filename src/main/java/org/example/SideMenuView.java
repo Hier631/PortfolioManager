@@ -15,14 +15,25 @@ public class SideMenuView extends JPanel {
     public static final int SELECTED_ITEM_FOREGROUND_COLOR = 0xffb900;
     public static final int FONT_SIZE = 13;
 
+    private JLabel lblIndexFunds;
+    private JLabel lblOrders;
+
+    public JLabel getLblIndexFunds() {
+        return lblIndexFunds;
+    }
+
+    public JLabel getLblOrders() {
+        return lblOrders;
+    }
+
     public SideMenuView() {
         this.setLayout(new MigLayout("insets 0, gapy 0, wrap 1", "[fill, grow]"));
         this.setBackground(new Color(BACKGROUND_COLOR));
 
-        JLabel lblIndexFunds = new JLabel("Index Funds");
+        lblIndexFunds = new JLabel("Index Funds");
         setSelected(lblIndexFunds, true);
 
-        JLabel lblOrders = new JLabel("Orders");
+        lblOrders = new JLabel("Orders");
         setSelected(lblOrders, false);
 
         this.add(lblIndexFunds);
