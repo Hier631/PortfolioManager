@@ -78,8 +78,14 @@ public class OrderDao implements Dao<OrderDto, Integer> {
     @Override
     public void update(OrderDto orderDto) {
         if (orderDto != null && orderDto.getId() != null) {
+
             Order order = Cayenne.objectForPK(context, Order.class, orderDto.getId());
             order.copyDataFromDto(orderDto);
+
+            if (orderDto.getIndexFundId() != null) {
+                order.setIndexFund(Cayenne.objectForPK(context, IndexFund.class, orderDto.getIndexFundId()));
+            }
+
             context.commitChanges();
         }
     }
