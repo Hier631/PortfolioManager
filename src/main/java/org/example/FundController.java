@@ -62,6 +62,7 @@ public class FundController implements Updatable {
 
     private void updateTable() {
         DefaultTableModel tableModel = new DefaultTableModel();
+
         tableModel.addColumn("ISIN");
         tableModel.addColumn("Name");
 

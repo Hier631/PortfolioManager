@@ -28,7 +28,8 @@ public class SideMenuController {
                 // TODO: Delete this code later
 
                 if (!isSelected) {
-                    view.getMainView().addCard(new OrderView(view.getMainView()), "Test");
+                    OrderController controller = new OrderController(new OrderView(view.getMainView()));
+                    view.getMainView().addCard(controller.getView(), "Test");
                     view.getMainView().showCard("Test");
                 }
 

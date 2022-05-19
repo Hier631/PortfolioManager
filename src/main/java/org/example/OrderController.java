@@ -1,0 +1,45 @@
+package org.example;
+
+import org.example.model.*;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
+
+public class OrderController {
+
+    private OrderView view;
+    private Dao<IndexFundDto, Integer> indexFundDao = new IndexFundDao();
+    private Dao<OrderDto, Integer> orderDao = new OrderDao();
+
+    public OrderView getView() {
+        return view;
+    }
+
+    public OrderController(OrderView view) {
+        this.view = view;
+        initView();
+    }
+
+    private void initView() {
+        updateComboBox();
+        updateTable();
+    }
+
+    private void updateComboBox() {
+        DefaultComboBoxModel<IndexFundDto> comboBoxModel = new DefaultComboBoxModel<>(indexFundDao.getAll().toArray(new IndexFundDto[0]));
+        view.getCbIndexFunds().setModel(comboBoxModel);
+        view.getCbIndexFunds().setRenderer(new FundRenderer());
+    }
+
+    private void updateTable() {
+        DefaultTableModel tableModel = new DefaultTableModel();
+
+        tableModel.addColumn("Date");
+        tableModel.addColumn("Purchase / Sale");
+        tableModel.addColumn("Share Price");
+        tableModel.addColumn("Share Quantity");
+
+        view.getCtbOrders().setModel(tableModel);
+    }
+}

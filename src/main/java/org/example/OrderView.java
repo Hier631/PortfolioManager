@@ -2,6 +2,7 @@ package org.example;
 
 import net.miginfocom.swing.MigLayout;
 import org.example.customizedcomponents.CustomizedTable;
+import org.example.model.IndexFundDto;
 
 import javax.swing.*;
 
@@ -11,7 +12,7 @@ public class OrderView extends JPanel {
     private JButton btnAddOrder;
     private JButton btnUpdateOrder;
     private JButton btnDeleteOrder;
-    private JComboBox<String> cbIndexFunds;
+    private JComboBox<IndexFundDto> cbIndexFunds;
     private CustomizedTable ctbOrders;
 
     public MainView getMainView() {
@@ -30,7 +31,7 @@ public class OrderView extends JPanel {
         return btnDeleteOrder;
     }
 
-    public JComboBox<String> getCbIndexFunds() {
+    public JComboBox<IndexFundDto> getCbIndexFunds() {
         return cbIndexFunds;
     }
 
