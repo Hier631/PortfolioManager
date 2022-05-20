@@ -12,6 +12,8 @@ public class MainView extends JFrame {
     public static final String APP_TITLE = "Portfolio Manager";
     public static final String FUND_FORM_VIEW_ID = "FundFormView";
     public static final String FUND_VIEW_ID = "FundView";
+    public static final String ORDER_FORM_VIEW_ID = "OrderFormView";
+    public static final String ORDER_VIEW_ID = "OrderView";
 
     private JPanel cards = new JPanel(new CardLayout());
     private Map<String, JPanel> panels = new HashMap<>();

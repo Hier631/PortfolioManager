@@ -26,6 +26,15 @@ public class OrderController {
         updateTable();
     }
 
+    public void initController() {
+        view.getBtnAddOrder().addActionListener(e -> addOrder());
+    }
+
+    private void addOrder() {
+        view.getMainView().addCard(new OrderFormView(view.getMainView()), MainView.ORDER_FORM_VIEW_ID);
+        view.getMainView().showCard(MainView.ORDER_FORM_VIEW_ID);
+    }
+
     private void updateComboBox() {
         DefaultComboBoxModel<IndexFundDto> comboBoxModel = new DefaultComboBoxModel<>(indexFundDao.getAll().toArray(new IndexFundDto[0]));
         view.getCbIndexFunds().setModel(comboBoxModel);
