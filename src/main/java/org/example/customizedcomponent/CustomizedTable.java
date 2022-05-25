@@ -1,8 +1,6 @@
-package org.example.customizedcomponents;
+package org.example.customizedcomponent;
 
 import javax.swing.*;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 // TODO: Clear cell selection when clicking outside the table.
 

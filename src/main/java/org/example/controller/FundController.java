@@ -1,6 +1,6 @@
 package org.example.controller;
 
-import org.example.customizedcomponents.CustomizedTable;
+import org.example.customizedcomponent.CustomizedTable;
 import org.example.model.Dao;
 import org.example.model.IndexFundDao;
 import org.example.model.IndexFundDto;

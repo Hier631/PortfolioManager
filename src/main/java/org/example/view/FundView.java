@@ -1,7 +1,7 @@
 package org.example.view;
 
 import net.miginfocom.swing.MigLayout;
-import org.example.customizedcomponents.CustomizedTable;
+import org.example.customizedcomponent.CustomizedTable;
 
 import javax.swing.*;
 
