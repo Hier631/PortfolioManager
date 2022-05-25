@@ -1,4 +1,4 @@
-package org.example;
+package org.example.spinnerdatemodel;
 
 import javax.swing.*;
 import java.text.DateFormatSymbols;

@@ -1,12 +1,10 @@
-package org.example;
+package org.example.view;
 
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class SideMenuView extends JPanel {
     public static final int BACKGROUND_COLOR = 0x2d2b29;

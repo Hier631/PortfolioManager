@@ -1,8 +1,10 @@
-package org.example;
+package org.example.controller;
 
 import org.example.model.Dao;
 import org.example.model.IndexFundDao;
 import org.example.model.IndexFundDto;
+import org.example.view.FundFormView;
+import org.example.view.MainView;
 
 public class FundFormController {
 

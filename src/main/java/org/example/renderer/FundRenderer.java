@@ -1,4 +1,4 @@
-package org.example;
+package org.example.renderer;
 
 import org.example.model.IndexFundDto;
 

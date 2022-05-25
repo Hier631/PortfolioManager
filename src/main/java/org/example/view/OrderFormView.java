@@ -1,6 +1,9 @@
-package org.example;
+package org.example.view;
 
 import net.miginfocom.swing.MigLayout;
+import org.example.spinnerdatemodel.DaySpinnerNumberModel;
+import org.example.spinnerdatemodel.MonthSpinnerListModel;
+import org.example.spinnerdatemodel.YearSpinnerNumberModel;
 
 import javax.swing.*;
 

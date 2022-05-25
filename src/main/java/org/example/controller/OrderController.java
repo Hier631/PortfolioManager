@@ -1,10 +1,13 @@
-package org.example;
+package org.example.controller;
 
+import org.example.renderer.FundRenderer;
 import org.example.model.*;
+import org.example.view.MainView;
+import org.example.view.OrderFormView;
+import org.example.view.OrderView;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.util.List;
 
 public class OrderController {
 

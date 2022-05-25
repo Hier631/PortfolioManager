@@ -1,6 +1,8 @@
-package org.example;
+package org.example.main;
 
 import com.formdev.flatlaf.intellijthemes.FlatHiberbeeDarkIJTheme;
+import org.example.controller.MainController;
+import org.example.view.MainView;
 
 public class App 
 {

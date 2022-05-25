@@ -1,6 +1,7 @@
-package org.example;
+package org.example.controller;
 
-import javax.swing.*;
+import org.example.view.FundView;
+import org.example.view.MainView;
 
 public class MainController {
     private MainView mainView;

@@ -1,9 +1,12 @@
-package org.example;
+package org.example.controller;
 
 import org.example.customizedcomponents.CustomizedTable;
 import org.example.model.Dao;
 import org.example.model.IndexFundDao;
 import org.example.model.IndexFundDto;
+import org.example.view.FundFormView;
+import org.example.view.FundView;
+import org.example.view.MainView;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.HashMap;

@@ -1,6 +1,8 @@
-package org.example;
+package org.example.controller;
 
-import javax.swing.*;
+import org.example.view.OrderView;
+import org.example.view.SideMenuView;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
