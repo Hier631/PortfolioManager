@@ -2,7 +2,7 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/hier631/portfoliomanager/badge/master)](https://www.codefactor.io/repository/github/hier631/portfoliomanager/overview/master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e2e500bdc642c8c91bf9/maintainability)](https://codeclimate.com/github/Hier631/PortfolioManager/maintainability)
-![GitHub](https://img.shields.io/github/license/Hier631/PortfolioManager)
+[![GitHub](https://img.shields.io/github/license/Hier631/PortfolioManager)](https://choosealicense.com/licenses/apache-2.0/)
 
 Portfolio Manager is an application that helps to manage index funds.
 
