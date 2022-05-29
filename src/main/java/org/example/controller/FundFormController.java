@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.apache.cayenne.ObjectContext;
 import org.example.model.Dao;
 import org.example.model.IndexFundDao;
 import org.example.model.IndexFundDto;
@@ -8,24 +9,21 @@ import org.example.view.MainView;
 
 public class FundFormController {
 
+    private Integer fundId;
+    private Updatable updatable;
+    private FundFormView view;
     private Dao<IndexFundDto, Integer> dao;
 
-    private FundFormView view;
-    private Integer fundId;
-
-    private Updatable updatable;
-
-    public FundFormController(FundFormView view, Integer fundId) {
-        dao = new IndexFundDao();
-
+    public FundFormController(ObjectContext context, FundFormView view, Integer fundId) {
+        this.dao = new IndexFundDao(context);
         this.view = view;
         this.fundId = fundId;
 
         initView();
     }
 
-    public FundFormController(FundFormView view) {
-        this(view, null);
+    public FundFormController(ObjectContext context, FundFormView view) {
+        this(context, view, null);
     }
 
     private void initView() {

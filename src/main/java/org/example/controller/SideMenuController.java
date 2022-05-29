@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.apache.cayenne.ObjectContext;
 import org.example.view.OrderView;
 import org.example.view.SideMenuView;
 
@@ -10,9 +11,12 @@ import java.awt.font.TextAttribute;
 import java.util.Map;
 
 public class SideMenuController {
+
+    private ObjectContext context;
     private SideMenuView view;
 
-    public SideMenuController(SideMenuView view) {
+    public SideMenuController(ObjectContext context, SideMenuView view) {
+        this.context = context;
         this.view = view;
     }
 
@@ -30,7 +34,7 @@ public class SideMenuController {
                 // TODO: Delete this code later
 
                 if (!isSelected) {
-                    OrderController controller = new OrderController(new OrderView(view.getMainView()));
+                    OrderController controller = new OrderController(context, new OrderView(view.getMainView()));
                     controller.initController();
                     view.getMainView().addCard(controller.getView(), "Test");
                     view.getMainView().showCard("Test");

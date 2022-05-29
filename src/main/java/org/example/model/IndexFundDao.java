@@ -10,7 +10,11 @@ import java.util.List;
 
 public class IndexFundDao implements Dao<IndexFundDto, Integer> {
 
-    private final ObjectContext context = CayenneUtil.getContext();
+    private final ObjectContext context;
+
+    public IndexFundDao(ObjectContext context) {
+        this.context = context;
+    }
 
     @Override
     public IndexFundDto getById(Integer id) {

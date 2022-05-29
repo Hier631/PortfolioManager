@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.apache.cayenne.ObjectContext;
 import org.example.customizedcomponent.CustomizedTable;
 import org.example.model.Dao;
 import org.example.model.IndexFundDao;
@@ -16,11 +17,15 @@ import java.util.Map;
 public class FundController implements Updatable {
 
     private FundView view;
-    private Dao<IndexFundDto, Integer> dao = new IndexFundDao();
+    private ObjectContext context;
+    private Dao<IndexFundDto, Integer> dao;
     private Map<String, Integer> fundIsinToId;
 
-    public FundController(FundView view) {
+    public FundController(ObjectContext context, FundView view) {
+        this.context = context;
+        this.dao = new IndexFundDao(context);
         this.view = view;
+
         initView();
     }
 
@@ -39,15 +44,18 @@ public class FundController implements Updatable {
     }
 
     private void addFund() {
-        FundFormController controller = new FundFormController(new FundFormView(view.getMainView()));
+        FundFormController controller = new FundFormController(context, new FundFormView(view.getMainView()));
         controller.initController(this);
+
         view.getMainView().addCard(controller.getView(), MainView.FUND_FORM_VIEW_ID);
         view.getMainView().showCard(MainView.FUND_FORM_VIEW_ID);
     }
 
     private void updateFund() {
-        FundFormController controller = new FundFormController(new FundFormView(view.getMainView()), getSelectedFundId());
+        FundFormController controller = new FundFormController(
+                context, new FundFormView(view.getMainView()), getSelectedFundId());
         controller.initController(this);
+
         view.getMainView().addCard(controller.getView(), MainView.FUND_FORM_VIEW_ID);
         view.getMainView().showCard(MainView.FUND_FORM_VIEW_ID);
     }

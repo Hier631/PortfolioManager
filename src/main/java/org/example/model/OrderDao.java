@@ -10,7 +10,11 @@ import java.util.List;
 
 public class OrderDao implements Dao<OrderDto, Integer> {
 
-    private final ObjectContext context = CayenneUtil.getContext();
+    private final ObjectContext context;
+
+    public OrderDao(ObjectContext context) {
+        this.context = context;
+    }
 
     @Override
     public OrderDto getById(Integer id) {

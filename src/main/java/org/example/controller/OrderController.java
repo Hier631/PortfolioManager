@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.apache.cayenne.ObjectContext;
 import org.example.renderer.FundRenderer;
 import org.example.model.*;
 import org.example.view.MainView;
@@ -12,15 +13,18 @@ import javax.swing.table.DefaultTableModel;
 public class OrderController {
 
     private OrderView view;
-    private Dao<IndexFundDto, Integer> indexFundDao = new IndexFundDao();
-    private Dao<OrderDto, Integer> orderDao = new OrderDao();
+    private Dao<IndexFundDto, Integer> indexFundDao;
+    private Dao<OrderDto, Integer> orderDao;
 
     public OrderView getView() {
         return view;
     }
 
-    public OrderController(OrderView view) {
+    public OrderController(ObjectContext context, OrderView view) {
+        this.indexFundDao = new IndexFundDao(context);
+        this.orderDao = new OrderDao(context);
         this.view = view;
+
         initView();
     }
 
