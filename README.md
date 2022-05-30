@@ -13,6 +13,7 @@ Features to be implemented:
 - Add the current market value of each index fund to the index funds table.
 - Pie chart representing the percentage of each index fund in the investment portfolio.
 - Add index fund fees to the index fund table.
+- Add menu bar and shortcuts.
 
 ## Contributing
 
