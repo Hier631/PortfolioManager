@@ -3,6 +3,7 @@
     <module name="PortfolioManager" />
     <shortenClasspath name="NONE" />
     <useClassPathOnly />
+    <extension name="coverage" sample_coverage="false" />
     <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/testng.xml" />
     <option name="PACKAGE_NAME" value="" />
     <option name="MAIN_CLASS_NAME" value="" />
