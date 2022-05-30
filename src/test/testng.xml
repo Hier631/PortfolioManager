@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="AllTestsSuite">
+    <test name="AllTests" verbose="1" preserve-order="false">
+        <packages>
+            <package name="org.example.*"/>
+        </packages>
+    </test>
+</suite>
