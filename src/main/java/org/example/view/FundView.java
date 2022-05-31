@@ -13,6 +13,31 @@ public class FundView extends JPanel {
     private JButton btnAddIndexFund;
     private JButton btnDeleteIndexFund;
     private JButton btnUpdateIndexFund;
+    private OnUpdateListener onUpdateListener;
+
+    public MainView getMainView() {
+        return mainView;
+    }
+
+    public JButton getBtnAddIndexFund() {
+        return btnAddIndexFund;
+    }
+
+    public JButton getBtnUpdateIndexFund() {
+        return btnUpdateIndexFund;
+    }
+
+    public JButton getBtnDeleteIndexFund() {
+        return btnDeleteIndexFund;
+    }
+
+    public CustomizedTable getCtbIndexFunds() {
+        return ctbIndexFunds;
+    }
+
+    public void setOnUpdateListener(OnUpdateListener onUpdateListener) {
+        this.onUpdateListener = onUpdateListener;
+    }
 
     public FundView(MainView mainView) {
         this.mainView = mainView;
@@ -48,23 +73,9 @@ public class FundView extends JPanel {
         this.add(btnDeleteIndexFund, "growx, pushx");
     }
 
-    public MainView getMainView() {
-        return mainView;
-    }
-
-    public JButton getBtnAddIndexFund() {
-        return btnAddIndexFund;
-    }
-
-    public JButton getBtnUpdateIndexFund() {
-        return btnUpdateIndexFund;
-    }
-
-    public JButton getBtnDeleteIndexFund() {
-        return btnDeleteIndexFund;
-    }
-
-    public CustomizedTable getCtbIndexFunds() {
-        return ctbIndexFunds;
+    public void update() {
+        if (onUpdateListener != null) {
+            onUpdateListener.onUpdate();
+        }
     }
 }

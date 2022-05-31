@@ -14,6 +14,7 @@ public class OrderView extends JPanel {
     private JButton btnDeleteOrder;
     private JComboBox<IndexFundDto> cbIndexFunds;
     private CustomizedTable ctbOrders;
+    private OnUpdateListener onUpdateListener;
 
     public MainView getMainView() {
         return mainView;
@@ -37,6 +38,10 @@ public class OrderView extends JPanel {
 
     public CustomizedTable getCtbOrders() {
         return ctbOrders;
+    }
+
+    public void setOnUpdateListener(OnUpdateListener onUpdateListener) {
+        this.onUpdateListener = onUpdateListener;
     }
 
     public OrderView(MainView mainView) {
@@ -77,5 +82,11 @@ public class OrderView extends JPanel {
         ctbOrders.setCellSelectionEnabled(true);
 
         this.add(spOrders, "grow, push, span");
+    }
+
+    public void update() {
+        if (onUpdateListener != null) {
+            onUpdateListener.onUpdate();
+        }
     }
 }

@@ -4,8 +4,8 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.List;
 
 public class MainView extends JFrame {
 
@@ -66,5 +66,23 @@ public class MainView extends JFrame {
             this.cards.remove(this.panels.get(name));
             this.panels.remove(name);
         }
+    }
+
+    public JPanel getCard(String name) {
+        JPanel card = null;
+
+        if (name != null && panels.containsKey(name)) {
+            card = this.panels.get(name);
+        }
+
+        return card;
+    }
+
+    /**
+     * Returns all the unique card names. It's useful for debugging.
+     * @return the unique card names
+     */
+    public List<String> getCardNames() {
+        return new ArrayList<String>(panels.keySet());
     }
 }

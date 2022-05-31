@@ -3,7 +3,6 @@ package org.example.model;
 import org.apache.cayenne.Cayenne;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.query.ObjectSelect;
-import org.example.utils.CayenneUtil;
 
 import java.util.ArrayList;
 import java.util.List;

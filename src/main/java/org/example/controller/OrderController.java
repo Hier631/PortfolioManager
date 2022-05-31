@@ -29,8 +29,8 @@ public class OrderController {
     }
 
     private void initView() {
-        updateComboBox();
-        updateTable();
+        view.setOnUpdateListener(this::update);
+        update();
     }
 
     public void initController() {
@@ -57,5 +57,10 @@ public class OrderController {
         tableModel.addColumn("Share Quantity");
 
         view.getCtbOrders().setModel(tableModel);
+    }
+
+    private void update() {
+        updateComboBox();
+        updateTable();
     }
 }

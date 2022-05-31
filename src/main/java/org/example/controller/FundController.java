@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FundController implements Updatable {
+public class FundController {
 
     private FundView view;
     private ObjectContext context;
@@ -30,6 +30,7 @@ public class FundController implements Updatable {
     }
 
     private void initView() {
+        view.setOnUpdateListener(this::updateTable);
         updateTable();
     }
 
@@ -45,7 +46,7 @@ public class FundController implements Updatable {
 
     private void addFund() {
         FundFormController controller = new FundFormController(context, new FundFormView(view.getMainView()));
-        controller.initController(this);
+        controller.initController();
 
         view.getMainView().addCard(controller.getView(), MainView.FUND_FORM_VIEW_ID);
         view.getMainView().showCard(MainView.FUND_FORM_VIEW_ID);
@@ -54,7 +55,7 @@ public class FundController implements Updatable {
     private void updateFund() {
         FundFormController controller = new FundFormController(
                 context, new FundFormView(view.getMainView()), getSelectedFundId());
-        controller.initController(this);
+        controller.initController();
 
         view.getMainView().addCard(controller.getView(), MainView.FUND_FORM_VIEW_ID);
         view.getMainView().showCard(MainView.FUND_FORM_VIEW_ID);
@@ -88,10 +89,5 @@ public class FundController implements Updatable {
         }
 
         view.getCtbIndexFunds().setModel(tableModel);
-    }
-
-    @Override
-    public void update() {
-        updateTable();
     }
 }
