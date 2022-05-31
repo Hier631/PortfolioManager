@@ -4,6 +4,7 @@
 	 xsi:schemaLocation="http://cayenne.apache.org/schema/10/modelMap https://cayenne.apache.org/schema/10/modelMap.xsd"
 	 project-version="10">
 	<property name="defaultPackage" value="org.example.model"/>
+	<property name="quoteSqlIdentifiers" value="true"/>
 	<db-entity name="INDEX_FUND">
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="isin" type="VARCHAR" isMandatory="true" length="12"/>
