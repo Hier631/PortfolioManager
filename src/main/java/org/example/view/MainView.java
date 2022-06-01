@@ -14,6 +14,7 @@ public class MainView extends JFrame {
     public static final String FUND_VIEW_ID = "FundView";
     public static final String ORDER_FORM_VIEW_ID = "OrderFormView";
     public static final String ORDER_VIEW_ID = "OrderView";
+    public static final String MESSAGE_VIEW_ID = "MessageView";
 
     private JPanel cards = new JPanel(new CardLayout());
     private Map<String, JPanel> panels = new HashMap<>();

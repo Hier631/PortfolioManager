@@ -1,10 +1,10 @@
 package org.example.controller;
 
 import org.apache.cayenne.ObjectContext;
-import org.example.view.FundView;
-import org.example.view.MainView;
-import org.example.view.OrderView;
-import org.example.view.SideMenuView;
+import org.example.model.Dao;
+import org.example.model.IndexFundDao;
+import org.example.model.IndexFundDto;
+import org.example.view.*;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -17,11 +17,13 @@ import java.util.Objects;
 public class SideMenuController extends MouseAdapter {
 
     private ObjectContext context;
+    private Dao<IndexFundDto, Integer> dao;
     private SideMenuView view;
     private Font originalFont;
 
     public SideMenuController(ObjectContext context, SideMenuView view) {
         this.context = context;
+        this.dao = new IndexFundDao(context);
         this.view = view;
     }
 
@@ -39,6 +41,9 @@ public class SideMenuController extends MouseAdapter {
 
         if (isSelected) {
             showFundView();
+        }
+        else if (dao.getAll() == null || dao.getAll().isEmpty()) {
+            showMessageView();
         }
         else {
             showOrderView();
@@ -79,6 +84,20 @@ public class SideMenuController extends MouseAdapter {
 
         orderView.update();
         view.getMainView().showCard(MainView.ORDER_VIEW_ID);
+    }
+
+    private void showMessageView() {
+        removeAllCardsExcept(MainView.MESSAGE_VIEW_ID);
+
+        MessageView messageView = (MessageView) view.getMainView().getCard(MainView.MESSAGE_VIEW_ID);
+
+        if (messageView == null) {
+            messageView = new MessageView(MessageView.INDEX_FUND_NOT_FOUND_MESSAGE);
+            view.getMainView().addCard(messageView, MainView.MESSAGE_VIEW_ID);
+        }
+
+        messageView.setMessage(MessageView.INDEX_FUND_NOT_FOUND_MESSAGE);
+        view.getMainView().showCard(MainView.MESSAGE_VIEW_ID);
     }
 
     private void removeAllCardsExcept(String cardName) {
