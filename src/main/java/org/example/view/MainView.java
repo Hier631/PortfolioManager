@@ -68,6 +68,11 @@ public class MainView extends JFrame {
         }
     }
 
+    /**
+     * Returns the card that matches the given card name. If the card is not found, it returns null.
+     * @param name the name of the card
+     * @return the card that matches the given card name
+     */
     public JPanel getCard(String name) {
         JPanel card = null;
 
@@ -79,8 +84,8 @@ public class MainView extends JFrame {
     }
 
     /**
-     * Returns all the unique card names. It's useful for debugging.
-     * @return the unique card names
+     * Returns all unique names of cards added to the MainView object.
+     * @return the unique names of the cards
      */
     public List<String> getCardNames() {
         return new ArrayList<String>(panels.keySet());
