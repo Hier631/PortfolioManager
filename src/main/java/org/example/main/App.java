@@ -11,8 +11,7 @@ public class App
     {
         FlatHiberbeeDarkIJTheme.setup();
 
-        new MainController(CayenneUtil.getContext(), new MainView());
-
-        // CayenneUtil.shutdown();
+        MainController controller = new MainController(CayenneUtil.getContext(), new MainView());
+        controller.initController();
     }
 }

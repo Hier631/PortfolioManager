@@ -22,6 +22,9 @@ public class CayenneUtil {
         return context;
     }
 
+    /**
+     * Shuts down the Cayenne runtime.
+     */
     public static void shutdown() {
         if (serverRuntime != null) {
             serverRuntime.shutdown();
